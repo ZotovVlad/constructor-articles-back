@@ -4,3 +4,11 @@ spring:
 logging:
   file:
     name: logs/constructor-articles-back.log
+jdbc:
+  driverClassName:
+  url:
+  username:
+  password:
+hibernate:
+  dialect:
+  show_sql:
