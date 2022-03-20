@@ -1,8 +1,6 @@
 spring:
   application:
-    name: BotDiscord
-discord:
-  token: ""
+    name: constructor-articles-back
 logging:
   file:
-    name: logs/BotDiscord.log
+    name: logs/constructor-articles-back.log
