@@ -1,8 +1,8 @@
 package com.bajurus.constructorarticles.controller;
 
-import com.bajurus.constructorarticles.mapper.ImageMapper;
-import com.bajurus.constructorarticles.model.Image;
-import com.bajurus.constructorarticles.service.ImageService;
+import com.bajurus.constructorarticles.mapper.FileMapper;
+import com.bajurus.constructorarticles.model.File;
+import com.bajurus.constructorarticles.service.FileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.InputStreamResource;
@@ -17,33 +17,33 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/v3")
-public class ImageController {
+public class FileController {
 
-    Logger logger = LoggerFactory.getLogger(ImageController.class);
+    Logger logger = LoggerFactory.getLogger(FileController.class);
 
-    private final ImageMapper imageMapper;
-    private final ImageService imageService;
+    private final FileMapper fileMapper;
+    private final FileService fileService;
 
-    public ImageController(ImageMapper imageMapper, ImageService imageService) {
-        this.imageMapper = imageMapper;
-        this.imageService = imageService;
+    public FileController(FileMapper fileMapper, FileService fileService) {
+        this.fileMapper = fileMapper;
+        this.fileService = fileService;
     }
 
-    @GetMapping("/images/{id}")
+    @GetMapping("/files/{id}")
     public ResponseEntity<?> getImage(@PathVariable Integer id) throws IOException {
-        Image image = imageService.getImage(id);
+        File file = fileService.getImage(id);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .header("fileName", image.getOriginalFileName())
-                .contentType(MediaType.valueOf(image.getContentType()))
-                .contentLength(image.getSize())
-                .body(new InputStreamResource(new ByteArrayInputStream(image.getBytes())));
+                .header("fileName", file.getOriginalFileName())
+                .contentType(MediaType.valueOf(file.getContentType()))
+                .contentLength(file.getSize())
+                .body(new InputStreamResource(new ByteArrayInputStream(file.getBytes())));
     }
 
-    @PostMapping("/image")
+    @PostMapping("/file")
     public ResponseEntity<?> saveImage(@RequestParam("file") MultipartFile file) throws IOException {
-        Image image = imageMapper.toEntity(file);
-        image = imageService.saveImage(image);
+        File image = fileMapper.toEntity(file);
+        image = fileService.saveImage(image);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .header("fileName", image.getOriginalFileName())

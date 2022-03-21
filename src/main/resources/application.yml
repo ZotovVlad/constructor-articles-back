@@ -1,6 +1,8 @@
 spring:
   application:
     name: constructor-articles-back
+server:
+  port: 8080
 logging:
   file:
     name: logs/constructor-articles-back.log
