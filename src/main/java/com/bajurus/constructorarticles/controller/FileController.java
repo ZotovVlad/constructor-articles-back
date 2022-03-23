@@ -29,6 +29,7 @@ public class FileController {
         this.fileService = fileService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/files/{id}")
     public ResponseEntity<?> getImage(@PathVariable Integer id) throws IOException {
         File file = fileService.getImage(id);
@@ -40,6 +41,7 @@ public class FileController {
                 .body(new InputStreamResource(new ByteArrayInputStream(file.getBytes())));
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/file")
     public ResponseEntity<?> saveImage(@RequestParam("file") MultipartFile file) throws IOException {
         File image = fileMapper.toEntity(file);
