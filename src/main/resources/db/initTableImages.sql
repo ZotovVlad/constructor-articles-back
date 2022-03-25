@@ -1,4 +1,4 @@
-create table files
+create table images
 (
     id                int auto_increment,
     name              varchar(100) not null,

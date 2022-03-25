@@ -1,14 +1,14 @@
 package com.bajurus.constructorarticles.dao.impl;
 
-import com.bajurus.constructorarticles.dao.FileDAO;
-import com.bajurus.constructorarticles.model.File;
+import com.bajurus.constructorarticles.dao.ImageDAO;
+import com.bajurus.constructorarticles.model.Image;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class FileDAOImpl implements FileDAO {
+public class ImageDAOImpl implements ImageDAO {
 
     private SessionFactory sessionFactory;
 
@@ -18,15 +18,15 @@ public class FileDAOImpl implements FileDAO {
     }
 
     @Override
-    public File saveImage(File file) {
+    public Image saveImage(Image image) {
         Session session = sessionFactory.getCurrentSession();
-        session.save(file);
-        return file;
+        session.save(image);
+        return image;
     }
 
     @Override
-    public File getImage(Integer id) {
+    public Image getImage(Integer id) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(File.class, id);
+        return session.get(Image.class, id);
     }
 }

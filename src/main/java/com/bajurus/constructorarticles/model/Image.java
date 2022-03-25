@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Arrays;
 
 @Entity
-@Table(name = "files")
-public class File {
+@Table(name = "images")
+public class Image {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
