@@ -1,10 +1,13 @@
 package com.bajurus.constructorarticles.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Arrays;
 
 @Entity
 @Table(name = "images")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler", "fieldHandler"}, ignoreUnknown = true)
 public class Image {
     @Id
     @Column(name = "id")
