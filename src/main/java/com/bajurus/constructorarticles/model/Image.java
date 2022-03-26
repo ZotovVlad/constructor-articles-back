@@ -73,6 +73,10 @@ public class Image {
     public Image() {
     }
 
+    public Image(Integer id) {
+        this.id = id;
+    }
+
     public Image(Integer id, String name, String originalFileName, String contentType, Integer size, byte[] bytes) {
         this.id = id;
         this.name = name;

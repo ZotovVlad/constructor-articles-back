@@ -1,25 +1,27 @@
-create table articles_photo
+create table articles_image
 (
-    id         int        auto_increment,
-    fio        char(100)  null,
-    email      char(100)  null,
-    author     text null,
-    annotation text null,
-    keywords   char(100)  null,
-    type       char(20)   null,
-    date       datetime   null,
-    resource1  int        null,
-    resource2  int        null,
-    resource3  int        null,
-    resource4  int        null,
-    resource5  int        null,
-    resource6  int        null,
-    resource7  int        null,
-    resource8  int        null,
-    resource9  int        null,
-    resource10 int        null,
+    id         int auto_increment,
+    fio        char(100) null,
+    email      char(100) null,
+    author     text      null,
+    annotation text      null,
+    keywords   char(100) null,
+    type       char(20)  null,
+    date       datetime  null,
+    resource0  int       null,
+    resource1  int       null,
+    resource2  int       null,
+    resource3  int       null,
+    resource4  int       null,
+    resource5  int       null,
+    resource6  int       null,
+    resource7  int       null,
+    resource8  int       null,
+    resource9  int       null,
     constraint articles_pk
         primary key (id),
+    constraint table_name_images_id_fk0
+        foreign key (resource0) references images (id),
     constraint table_name_images_id_fk1
         foreign key (resource1) references images (id),
     constraint table_name_images_id_fk2
@@ -37,7 +39,5 @@ create table articles_photo
     constraint table_name_images_id_fk8
         foreign key (resource8) references images (id),
     constraint table_name_images_id_fk9
-        foreign key (resource9) references images (id),
-    constraint table_name_images_id_fk10
-        foreign key (resource10) references images (id)
+        foreign key (resource9) references images (id)
 );

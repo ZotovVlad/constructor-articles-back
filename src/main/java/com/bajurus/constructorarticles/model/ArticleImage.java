@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "articles_photo")
-public class ArticlePhoto {
+@Table(name = "articles_image")
+public class ArticleImage {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +24,9 @@ public class ArticlePhoto {
     private String type;
     @Column(name = "date")
     private LocalDateTime date;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "resource0", unique = true)
+    private Image resource0;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "resource1", unique = true)
     private Image resource1;
@@ -51,9 +54,6 @@ public class ArticlePhoto {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "resource9", unique = true)
     private Image resource9;
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "resource10", unique = true)
-    private Image resource10;
 
     public Integer getId() {
         return id;
@@ -117,6 +117,14 @@ public class ArticlePhoto {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public Image getResource0() {
+        return resource0;
+    }
+
+    public void setResource0(Image resource0) {
+        this.resource0 = resource0;
     }
 
     public Image getResource1() {
@@ -191,18 +199,10 @@ public class ArticlePhoto {
         this.resource9 = resource9;
     }
 
-    public Image getResource10() {
-        return resource10;
+    public ArticleImage() {
     }
 
-    public void setResource10(Image resource10) {
-        this.resource10 = resource10;
-    }
-
-    public ArticlePhoto() {
-    }
-
-    public ArticlePhoto(Integer id, String fio, String email, String author, String annotation, String keywords, String type, LocalDateTime date, Image resource1, Image resource2, Image resource3, Image resource4, Image resource5, Image resource6, Image resource7, Image resource8, Image resource9, Image resource10) {
+    public ArticleImage(Integer id, String fio, String email, String author, String annotation, String keywords, String type, LocalDateTime date, Image resource0, Image resource1, Image resource2, Image resource3, Image resource4, Image resource5, Image resource6, Image resource7, Image resource8, Image resource9) {
         this.id = id;
         this.fio = fio;
         this.email = email;
@@ -211,6 +211,7 @@ public class ArticlePhoto {
         this.keywords = keywords;
         this.type = type;
         this.date = date;
+        this.resource0 = resource0;
         this.resource1 = resource1;
         this.resource2 = resource2;
         this.resource3 = resource3;
@@ -220,12 +221,11 @@ public class ArticlePhoto {
         this.resource7 = resource7;
         this.resource8 = resource8;
         this.resource9 = resource9;
-        this.resource10 = resource10;
     }
 
     @Override
     public String toString() {
-        return "ArticlePhoto{" +
+        return "ArticleImage{" +
                 "id=" + id +
                 ", fio='" + fio + '\'' +
                 ", email='" + email + '\'' +
@@ -234,6 +234,7 @@ public class ArticlePhoto {
                 ", keywords='" + keywords + '\'' +
                 ", type='" + type + '\'' +
                 ", date=" + date +
+                ", resource0=" + resource0 +
                 ", resource1=" + resource1 +
                 ", resource2=" + resource2 +
                 ", resource3=" + resource3 +
@@ -243,7 +244,6 @@ public class ArticlePhoto {
                 ", resource7=" + resource7 +
                 ", resource8=" + resource8 +
                 ", resource9=" + resource9 +
-                ", resource10=" + resource10 +
                 '}';
     }
 }

@@ -1,14 +1,14 @@
 package com.bajurus.constructorarticles.dao.impl;
 
-import com.bajurus.constructorarticles.dao.ArticlePhotoDAO;
-import com.bajurus.constructorarticles.model.ArticlePhoto;
+import com.bajurus.constructorarticles.dao.ArticleImageDAO;
+import com.bajurus.constructorarticles.model.ArticleImage;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ArticlePhotoDAOImpl implements ArticlePhotoDAO {
+public class ArticleImageDAOImpl implements ArticleImageDAO {
 
     private SessionFactory sessionFactory;
 
@@ -18,15 +18,15 @@ public class ArticlePhotoDAOImpl implements ArticlePhotoDAO {
     }
 
     @Override
-    public ArticlePhoto saveArticlePhoto(ArticlePhoto articlePhoto) {
+    public ArticleImage saveArticleImage(ArticleImage articleImage) {
         Session session = sessionFactory.getCurrentSession();
-        session.save(articlePhoto);
-        return articlePhoto;
+        session.save(articleImage);
+        return articleImage;
     }
 
     @Override
-    public ArticlePhoto getArticlePhoto(Integer id) {
+    public ArticleImage getArticleImage(Integer id) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(ArticlePhoto.class, id);
+        return session.get(ArticleImage.class, id);
     }
 }
