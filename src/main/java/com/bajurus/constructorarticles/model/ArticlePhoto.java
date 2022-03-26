@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "articles_photo")
-public class ArticlesPhoto {
+public class ArticlePhoto {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -199,10 +199,10 @@ public class ArticlesPhoto {
         this.resource10 = resource10;
     }
 
-    public ArticlesPhoto() {
+    public ArticlePhoto() {
     }
 
-    public ArticlesPhoto(Integer id, String fio, String email, String author, String annotation, String keywords, String type, LocalDateTime date, Image resource1, Image resource2, Image resource3, Image resource4, Image resource5, Image resource6, Image resource7, Image resource8, Image resource9, Image resource10) {
+    public ArticlePhoto(Integer id, String fio, String email, String author, String annotation, String keywords, String type, LocalDateTime date, Image resource1, Image resource2, Image resource3, Image resource4, Image resource5, Image resource6, Image resource7, Image resource8, Image resource9, Image resource10) {
         this.id = id;
         this.fio = fio;
         this.email = email;
@@ -225,7 +225,7 @@ public class ArticlesPhoto {
 
     @Override
     public String toString() {
-        return "ArticlesPhoto{" +
+        return "ArticlePhoto{" +
                 "id=" + id +
                 ", fio='" + fio + '\'' +
                 ", email='" + email + '\'' +
