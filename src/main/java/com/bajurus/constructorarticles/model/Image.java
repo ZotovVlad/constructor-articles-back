@@ -70,6 +70,18 @@ public class Image {
         this.bytes = bytes;
     }
 
+    public Image() {
+    }
+
+    public Image(Integer id, String name, String originalFileName, String contentType, Integer size, byte[] bytes) {
+        this.id = id;
+        this.name = name;
+        this.originalFileName = originalFileName;
+        this.contentType = contentType;
+        this.size = size;
+        this.bytes = bytes;
+    }
+
     @Override
     public String toString() {
         return "Image{" +
