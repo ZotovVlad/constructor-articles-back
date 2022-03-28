@@ -6,6 +6,7 @@ create table images
     content_type      text null,
     size              int null,
     bytes             longblob null,
+    data              text null,
     constraint images_pk
         primary key (id)
 );
