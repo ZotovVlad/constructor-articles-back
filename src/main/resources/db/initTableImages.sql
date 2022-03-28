@@ -1,11 +1,11 @@
 create table images
 (
     id                int auto_increment,
-    name              text not null,
-    original_filename text not null,
-    content_type      text not null,
-    size              int          not null,
-    bytes             longblob     not null,
+    name              text null,
+    original_filename text null,
+    content_type      text null,
+    size              int null,
+    bytes             longblob null,
     constraint images_pk
         primary key (id)
 );
