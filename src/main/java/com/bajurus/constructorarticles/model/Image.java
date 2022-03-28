@@ -24,6 +24,8 @@ public class Image {
     @Lob
     @Column(name = "bytes")
     private byte[] bytes;
+    @Column(name = "data")
+    private String data;
 
     public Integer getId() {
         return id;
@@ -73,6 +75,14 @@ public class Image {
         this.bytes = bytes;
     }
 
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
     public Image() {
     }
 
@@ -80,13 +90,14 @@ public class Image {
         this.id = id;
     }
 
-    public Image(Integer id, String name, String originalFileName, String contentType, Integer size, byte[] bytes) {
+    public Image(Integer id, String name, String originalFileName, String contentType, Integer size, byte[] bytes, String data) {
         this.id = id;
         this.name = name;
         this.originalFileName = originalFileName;
         this.contentType = contentType;
         this.size = size;
         this.bytes = bytes;
+        this.data = data;
     }
 
     @Override
@@ -98,6 +109,7 @@ public class Image {
                 ", contentType='" + contentType + '\'' +
                 ", size=" + size +
                 ", bytes=" + Arrays.toString(bytes) +
+                ", data='" + data + '\'' +
                 '}';
     }
 }
