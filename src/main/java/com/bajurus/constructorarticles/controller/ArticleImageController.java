@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v3")
 public class ArticleImageController {
@@ -28,7 +30,7 @@ public class ArticleImageController {
         this.objectMapper = objectMapper;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://vagne0rlove9.github.io")
     @GetMapping("/articlesimage/{id}")
     public ResponseEntity<?> getArticleImage(@PathVariable Integer id) throws JsonProcessingException {
         ArticleImage articleImage = articleImageService.getArticleImage(id);
@@ -36,12 +38,20 @@ public class ArticleImageController {
         return new ResponseEntity<>(objectMapper.writeValueAsString(articleImage), HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://vagne0rlove9.github.io")
     @PostMapping("/articleimage")
     public ResponseEntity<?> saveArticleImage(@RequestBody ArticleImageDTO articleImageDTO) {
         ArticleImage articleImage = articleImageMapper.toEntity(articleImageDTO);
         articleImage = articleImageService.saveArticleImage(articleImage);
         logger.info("Created: " + articleImage.toString());
         return new ResponseEntity<>(articleImage, HttpStatus.CREATED);
+    }
+
+    @CrossOrigin(origins = "https://vagne0rlove9.github.io")
+    @GetMapping("/articlesimage")
+    public ResponseEntity<?> getAllArticleImage() throws JsonProcessingException {
+        List<ArticleImage> articlesImage = articleImageService.getAllArticleImage();
+        logger.info("Received: " + articlesImage.toString());
+        return new ResponseEntity<>(objectMapper.writeValueAsString(articlesImage), HttpStatus.OK);
     }
 }

@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class ArticleImageDAOImpl implements ArticleImageDAO {
 
@@ -28,5 +30,11 @@ public class ArticleImageDAOImpl implements ArticleImageDAO {
     public ArticleImage getArticleImage(Integer id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(ArticleImage.class, id);
+    }
+
+    @Override
+    public List<ArticleImage> getAllArticleImage() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createSQLQuery("SELECT * FROM articles_image").addEntity(ArticleImage.class).list();
     }
 }

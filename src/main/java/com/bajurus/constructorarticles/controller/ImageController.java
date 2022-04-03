@@ -29,7 +29,7 @@ public class ImageController {
         this.imageService = imageService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://vagne0rlove9.github.io")
     @GetMapping("/images/{id}")
     public ResponseEntity<?> getImage(@PathVariable Integer id) throws IOException {
         Image image = imageService.getImage(id);
@@ -41,7 +41,7 @@ public class ImageController {
                 .body(new InputStreamResource(new ByteArrayInputStream(image.getBytes())));
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://vagne0rlove9.github.io")
     @PostMapping("/image")
     public ResponseEntity<?> saveImage(@RequestParam("file") MultipartFile file) throws IOException {
         Image image = imageMapper.toEntity(file);

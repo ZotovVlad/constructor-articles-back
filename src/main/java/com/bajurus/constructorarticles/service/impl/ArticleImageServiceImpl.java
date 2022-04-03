@@ -5,6 +5,8 @@ import com.bajurus.constructorarticles.model.ArticleImage;
 import com.bajurus.constructorarticles.service.ArticleImageService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ArticleImageServiceImpl implements ArticleImageService {
 
@@ -22,5 +24,10 @@ public class ArticleImageServiceImpl implements ArticleImageService {
     @Override
     public ArticleImage getArticleImage(Integer id) {
         return articleImageDAO.getArticleImage(id);
+    }
+
+    @Override
+    public List<ArticleImage> getAllArticleImage() {
+        return articleImageDAO.getAllArticleImage();
     }
 }
